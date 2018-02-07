@@ -1,12 +1,49 @@
 # React Visible Control
 
-React Component Wrapper for Declarative rendered control
+[![npm version](https://badge.fury.io/js/react-visible-control.svg)](https://badge.fury.io/js/react-visible-control) [![cnpm version](https://npm.taobao.org/badge/v/react-visible-control.svg?style=flat-square)](https://npm.taobao.org/package/react-visible-control)
+
+A wrapper for controlling components rendering in declarative way
 
 WARNING!!!, please make sure you know what you are doing !
 
 this lib use [React Context API](https://doc.react-china.org/docs/context.html), please make sure your project not and won't rewrite `shouldComponentUpdate` func in component
 
-## basic usage
+## sample application
+
+[Here is a sample application based on react-visible-control](https://github.com/Soontao/react-visible-control-sample)
+
+Basic usage as following
+
+```javascript
+import React, { Component } from 'react';
+import { VisibleContext, VisibleControl, createContext } from "react-visible-control";
+
+class App extends Component {
+  render() {
+    return (
+      <div className="App">
+        <VisibleContext data={{ "home": true, "page1": true }}>
+          <div>
+            <VisibleControl visibleKey="home">
+              <p>home</p>
+            </VisibleControl>
+            <VisibleControl visibleKey="page1">
+              <p>page1</p>
+            </VisibleControl>
+            <VisibleControl visibleKey="page2">
+              <p>page2</p>
+            </VisibleControl>
+          </div>
+        </VisibleContext>
+      </div>
+    );
+  }
+}
+
+export default App;
+```
+
+## custom usage
 
 in this demo, without permission, react will not render child component
 
