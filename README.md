@@ -1,6 +1,6 @@
 # React Visible Control
 
-[![CircleCI](https://circleci.com/gh/Soontao/react-visible-control.svg?style=svg)](https://circleci.com/gh/Soontao/react-visible-control) [![npm version](https://badge.fury.io/js/react-visible-control.svg)](https://badge.fury.io/js/react-visible-control) [![cnpm version](https://npm.taobao.org/badge/v/react-visible-control.svg?style=flat-square)](https://npm.taobao.org/package/react-visible-control)
+[![CircleCI](https://circleci.com/gh/Soontao/react-visible-control.svg?style=svg)](https://circleci.com/gh/Soontao/react-visible-control) [![codecov](https://codecov.io/gh/Soontao/react-visible-control/branch/master/graph/badge.svg)](https://codecov.io/gh/Soontao/react-visible-control) [![npm version](https://badge.fury.io/js/react-visible-control.svg)](https://badge.fury.io/js/react-visible-control) [![cnpm version](https://npm.taobao.org/badge/v/react-visible-control.svg?style=flat-square)](https://npm.taobao.org/package/react-visible-control)
 
 A wrapper for controlling components rendering in declarative way
 
@@ -14,33 +14,52 @@ this lib use [React Context API](https://doc.react-china.org/docs/context.html),
 
 Basic usage as following
 
-```javascript
+```jsx
 import React, { Component } from 'react';
-import { VisibleContext, VisibleControl, createContext } from "react-visible-control";
+import { Failback, VisibleContext, VisibleControl } from '../src/index';
 
-class App extends Component {
+
+const visibleData = { "home": true, "page1": true, "page2": false }
+
+export default class Test extends Component {
   render() {
     return (
-      <div className="App">
-        <VisibleContext data={{ "home": true, "page1": true }}>
-          <div>
-            <VisibleControl visibleKey="home">
-              <p>home</p>
-            </VisibleControl>
-            <VisibleControl visibleKey="page1">
-              <p>page1</p>
-            </VisibleControl>
-            <VisibleControl visibleKey="page2">
-              <p>page2</p>
-            </VisibleControl>
-          </div>
-        </VisibleContext>
-      </div>
+      <VisibleContext data={visibleData}>
+        <div>
+          <VisibleControl visibleKey={"home"}>
+            <p>home</p>
+          </VisibleControl>
+          <VisibleControl visibleKey={"page1"}>
+            <p>page1</p>
+          </VisibleControl>
+          <VisibleControl visibleKey={"page2"}>
+            <p>page2</p>
+            <Failback><p>you cant access page2, but you could show a failback thing here</p></Failback>
+          </VisibleControl>
+          <VisibleControl visibleKey={"page3"}>
+            <p>page3</p>
+          </VisibleControl>
+        </div>
+      </VisibleContext>
     );
   }
 }
+```
 
-export default App;
+Render Result: 
+
+```html
+<div>
+  <p>
+    home
+  </p>
+  <p>
+    page1
+  </p>
+  <p>
+    you cant access page2, but you could show a failback thing here
+  </p>
+</div>
 ```
 
 ## custom usage
