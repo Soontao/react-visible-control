@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render test 1`] = `
+<div>
+  <p>
+    home
+  </p>
+  <p>
+    page1
+  </p>
+  <p>
+    you cant access page2, but you could show a failback thing here
+  </p>
+</div>
+`;

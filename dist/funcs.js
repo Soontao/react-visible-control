@@ -9,9 +9,17 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _react = require("react");
 
+var _react2 = _interopRequireDefault(_react);
+
 var _propTypes = require("prop-types");
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _lodash = require("lodash");
+
+var _Fallback = require("./Fallback");
+
+var _Fallback2 = _interopRequireDefault(_Fallback);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -94,6 +102,11 @@ var createContext = exports.createContext = function createContext(contextName) 
         return _this2;
       }
 
+      /**
+       * Get Visible Context
+       */
+
+
       _createClass(control, [{
         key: "getVisibleData",
         value: function getVisibleData() {
@@ -102,18 +115,23 @@ var createContext = exports.createContext = function createContext(contextName) 
       }, {
         key: "render",
         value: function render() {
+          var children = _react2.default.Children.toArray(this.props.children);
           if (this.visible(this.getVisibleData())) {
-            return this.props.children;
+            return (0, _lodash.filter)(children, function (c) {
+              return c.type !== _Fallback2.default;
+            });
+          } else {
+            return (0, _lodash.filter)(children, function (c) {
+              return c.type === _Fallback2.default;
+            }) || null;
           }
-
-          return null;
         }
       }]);
 
       return control;
     }(_react.Component);
 
-    control.displayName = contextName + "VisibleControl";
+    control.displayName = contextName + "Control";
 
     control.propTypes = {
       "children": _propTypes2.default.any,
@@ -139,3 +157,4 @@ var createContext = exports.createContext = function createContext(contextName) 
 };
 
 exports.default = { createContext: createContext };
+//# sourceMappingURL=funcs.js.map

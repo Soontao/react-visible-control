@@ -1,6 +1,7 @@
-import { Component } from 'react';
+import React, { Component } from 'react';
 import PropTypes from "prop-types";
-
+import { filter } from "lodash";
+import Failback from './Fallback';
 
 /**
  * CreateContext
@@ -62,21 +63,25 @@ export const createContext = (contextName) => {
         this.visible = visibleFunc || ((data) => Boolean(data[this.props.visibleKey]));
       }
 
+      /**
+       * Get Visible Context
+       */
       getVisibleData() {
         return this.context[contextName] || {};
       }
 
       render() {
+        const children = React.Children.toArray(this.props.children);
         if (this.visible(this.getVisibleData())) {
-          return this.props.children;
+          return filter(children, c => c.type !== Failback);
+        } else {
+          return filter(children, c => c.type === Failback) || null
         }
-
-        return null;
       }
 
     };
 
-    control.displayName = `${contextName}VisibleControl`;
+    control.displayName = `${contextName}Control`;
 
     control.propTypes = {
       "children": PropTypes.any,
