@@ -1,6 +1,6 @@
 # React Visible Control
 
-[![npm version](https://badge.fury.io/js/react-visible-control.svg)](https://badge.fury.io/js/react-visible-control) [![cnpm version](https://npm.taobao.org/badge/v/react-visible-control.svg?style=flat-square)](https://npm.taobao.org/package/react-visible-control)
+[![CircleCI](https://circleci.com/gh/Soontao/react-visible-control.svg?style=svg)](https://circleci.com/gh/Soontao/react-visible-control) [![npm version](https://badge.fury.io/js/react-visible-control.svg)](https://badge.fury.io/js/react-visible-control) [![cnpm version](https://npm.taobao.org/badge/v/react-visible-control.svg?style=flat-square)](https://npm.taobao.org/package/react-visible-control)
 
 A wrapper for controlling components rendering in declarative way
 
