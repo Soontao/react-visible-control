@@ -1,7 +1,7 @@
 {
   "name": "react-visible-control",
   "description": "A wrapper for controlling components rendering in declarative way",
-  "version": "1.1.6",
+  "version": "1.1.7",
   "main": "dist",
   "scripts": {
     "build": "./node_modules/.bin/babel src --out-dir dist --copy-files -s",
