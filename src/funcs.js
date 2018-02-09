@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from "prop-types";
-import { filter } from "lodash";
+import { filter, get } from "lodash";
 import Failback from './Fallback';
 
 /**
@@ -8,7 +8,7 @@ import Failback from './Fallback';
  *
  * @param {string} contextName the context name
  */
-export const createContext = (contextName) => {
+export const createContext = (contextName = "VisibleControlDefault") => {
 
   /**
    * @augments {Component<{data:([]|object)}>}
@@ -60,7 +60,11 @@ export const createContext = (contextName) => {
 
       constructor(props) {
         super(props);
-        this.visible = visibleFunc || ((data) => Boolean(data[this.props.visibleKey]));
+        this.visible = visibleFunc || this.visible;
+      }
+
+      visible(data) {
+        return Boolean(get(data, this.props.visibleKey));
       }
 
       /**

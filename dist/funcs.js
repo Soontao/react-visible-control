@@ -34,7 +34,9 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
  *
  * @param {string} contextName the context name
  */
-var createContext = exports.createContext = function createContext(contextName) {
+var createContext = exports.createContext = function createContext() {
+  var contextName = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "VisibleControlDefault";
+
 
   /**
    * @augments {Component<{data:([]|object)}>}
@@ -96,18 +98,21 @@ var createContext = exports.createContext = function createContext(contextName) 
 
         var _this2 = _possibleConstructorReturn(this, (control.__proto__ || Object.getPrototypeOf(control)).call(this, props));
 
-        _this2.visible = visibleFunc || function (data) {
-          return Boolean(data[_this2.props.visibleKey]);
-        };
+        _this2.visible = visibleFunc || _this2.visible;
         return _this2;
       }
 
-      /**
-       * Get Visible Context
-       */
-
-
       _createClass(control, [{
+        key: "visible",
+        value: function visible(data) {
+          return Boolean((0, _lodash.get)(data, this.props.visibleKey));
+        }
+
+        /**
+         * Get Visible Context
+         */
+
+      }, {
         key: "getVisibleData",
         value: function getVisibleData() {
           return this.context[contextName] || {};

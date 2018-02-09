@@ -5,7 +5,7 @@
   "main": "dist",
   "scripts": {
     "build": "./node_modules/.bin/babel src --out-dir dist --copy-files -s",
-    "test": "./node_modules/.bin/jest"
+    "test": "./node_modules/.bin/jest --coverage"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -23,5 +23,9 @@
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-test-renderer": "^16.2.0"
-  }
+  },
+  "pre-commit": [
+    "test",
+    "build"
+  ]
 }

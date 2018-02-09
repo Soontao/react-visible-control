@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Failback, VisibleContext, VisibleControl } from '../dist/index';
+import { Failback, VisibleContext, VisibleControl } from '../src/index';
 
 
 const visibleData = { "home": true, "page1": true, "page2": false }
