@@ -95,11 +95,12 @@ const users = [
 ];
 
 // custome Control
-const zero = 0;
-export const UserReadPermission = createVisibleControl((data) => data.permissions && data.permissions.indexOf("user_read") >= zero);
-export const UserWritePermission = createVisibleControl((data) => data.permissions && data.permissions.indexOf("user_write") >= zero);
-export const UserDeletePermission = createVisibleControl((data) => data.permissions && data.permissions.indexOf("user_delete") >= zero);
-export const UserUpdatePermission = createVisibleControl((data) => data.permissions && data.permissions.indexOf("user_update") >= zero);
+const userHavePermission = per => data => data.permissions && data.permissions.indexOf(per) >= 0
+
+export const UserReadPermission   = createVisibleControl(userHavePermission("user_read"));
+export const UserWritePermission  = createVisibleControl(userHavePermission("user_write"));
+export const UserDeletePermission = createVisibleControl(userHavePermission("user_delete"));
+export const UserUpdatePermission = createVisibleControl(userHavePermission("user_update"));
 
 // app view
 class App extends Component {
