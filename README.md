@@ -6,7 +6,7 @@ A wrapper for controlling components rendering in declarative way
 
 WARNING!!!, please make sure you know what you are doing !
 
-this lib use [React Context API](https://doc.react-china.org/docs/context.html), please make sure your project not and won't rewrite `shouldComponentUpdate` func in component
+this lib use [React Context API](https://reactjs.org/docs/context.html), please make sure the `shouldComponentUpdate` method works correct in your project
 
 ## install
 
