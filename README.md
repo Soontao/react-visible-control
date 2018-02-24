@@ -132,3 +132,7 @@ class App extends Component {
   }
 }
 ```
+
+## License 
+
+MIT
