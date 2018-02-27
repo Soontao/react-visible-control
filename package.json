@@ -6,7 +6,7 @@
   "scripts": {
     "build": "./node_modules/.bin/babel src --out-dir dist --copy-files -s",
     "test": "./node_modules/.bin/jest --coverage",
-    "prepare": "npm run build"
+    "prepare": "npm run test && npm run build"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
