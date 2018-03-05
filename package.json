@@ -1,7 +1,7 @@
 {
   "name": "react-visible-control",
   "description": "A wrapper for controlling components rendering in declarative way",
-  "version": "1.1.8",
+  "version": "1.1.9",
   "main": "dist",
   "scripts": {
     "build": "./node_modules/.bin/babel src --out-dir dist --copy-files -s",
@@ -25,8 +25,7 @@
     "react-dom": "^16.0.0"
   },
   "peerDependencies": {
-    "react": "^16.0.0 || ^15.0.0",
-    "react-dom": "^16.0.0 || ^15.0.0"
+    "react": "*"
   },
   "pre-commit": [
     "test",
